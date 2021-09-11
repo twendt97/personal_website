@@ -6,6 +6,9 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+import debug_toolbar
+from django.urls import path
+
 from search import views as search_views
 
 urlpatterns = [
@@ -32,6 +35,7 @@ urlpatterns = urlpatterns + [
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
     path("", include(wagtail_urls)),
+    path('__debug__/', include(debug_toolbar.urls)),
 
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
