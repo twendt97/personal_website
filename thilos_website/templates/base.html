@@ -18,7 +18,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/thilos_website.css' %}">
+        <!-- The default stylesheet ist not required, since bootstrap 5 is used instead.-->
+        <!-- Customizations to bootstrap are done in theme.scss -->
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/thilos_website.css' %}"> -->
         {% compress css %}
             <link type="text/x-scss" href="{% static 'theme.scss' %}" rel="stylesheet" media="screen">
         {% endcompress %}
