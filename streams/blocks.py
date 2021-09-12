@@ -1,5 +1,6 @@
 """Stream fields live here"""
 
+import streams
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -12,6 +13,23 @@ class TitleAndTextBlock(blocks.StructBlock):
         template = "streams/title_and_text_block.html"
         icon = "edit"
         label = "Title & Text"
+
+
+class BlogItemBlock(blocks.StructBlock):
+    """Holds a part of a blog post"""
+
+    heading = blocks.CharBlock(required=False, help_text='Section Heading')
+    content = blocks.RichTextBlock(required=True,
+        features=['ol','ul','link'],
+        help_text='Write the subsection here'
+    )
+    image = ImageChooserBlock(required=True)
+
+    class Meta:
+        template = "streams/blog_item_block.html"
+        icon = "edit"
+        label = "Subsection"
+
 
 
 class CardBlock(blocks.StructBlock):

@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+{% image self.image min-900x600 as img %}
+
+<div class="p-3">
+    {% if self.heading %}
+        <h3> {{ self.heading }} </h3>
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-4">
+            {{ self.content }}
+        </div>
+        <div class="col-lg-8 box-shadow">
+            <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid" />
+        </div>
+    </div>
+</div>
+
+<hr>

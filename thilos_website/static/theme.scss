@@ -3,7 +3,8 @@
 $primary: red;
 
 @import './bootstrap/variables';
-$body-bg: $gray-800;
+$body-bg: $gray-900;
+$box-shadow-lg: 0 1rem 3rem rgba($white, .175);
 @import './bootstrap/utilities';
   
 @import './bootstrap/bootstrap';

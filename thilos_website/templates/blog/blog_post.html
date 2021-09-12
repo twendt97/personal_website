@@ -1,0 +1,14 @@
+{% extends "basic_page.html" %}
+{% load wagtailcore_tags %}
+
+{% block canvas %}
+
+<div class="p-3">
+    <h1 class="text-center">{{self.title}}</h1>
+</div>
+
+{% for block in page.content %}
+    {% include_block block %}
+{% endfor %}
+
+{% endblock %}
