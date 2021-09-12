@@ -1,3 +1,9 @@
+// variables can be overwritten after function import and before the rest gets imported
+@import './bootstrap/functions';
 $primary: red;
 
+@import './bootstrap/variables';
+$body-bg: $gray-800;
+@import './bootstrap/utilities';
+  
 @import './bootstrap/bootstrap';
