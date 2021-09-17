@@ -5,6 +5,8 @@
 
 {% block content %}
 
+<div class="container-fluid bg-black min-vh-100">
+
 <div class="p-3">
     <h1 class="text-center">{{self.title}}</h1>
 </div>
@@ -12,6 +14,7 @@
     {% for block in page.content %}
             {% include_block block %}
     {% endfor %}
+</div>
 </div>
 
 {% endblock content %}

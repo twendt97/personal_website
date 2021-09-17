@@ -1,10 +1,62 @@
-// variables can be overwritten after function import and before the rest gets imported
 @import './bootstrap/functions';
-$primary: red;
+
+// Default variable overwrite
+// settings
+$enable-rounded: false;
+$enable-shadows: true;
+
+// colors
+
 
 @import './bootstrap/variables';
-$body-bg: $gray-900;
-$box-shadow-lg: 0 1rem 3rem rgba($white, .175);
+
+// Variable overwrites that depend on variables of bootstrap (might not always work e.g. primary can not be overwritten here)
+
+// Remainder of required stylsheets
+@import "./bootstrap/mixins";
+@import "./bootstrap/root";
+
+// Optional stylesheets as needed
 @import './bootstrap/utilities';
-  
-@import './bootstrap/bootstrap';
+@import "./bootstrap/reboot";
+@import "./bootstrap/type";
+@import "./bootstrap/images";
+@import "./bootstrap/containers";
+@import "./bootstrap/grid";
+@import "./bootstrap/helpers";
+@import "./bootstrap/buttons";
+
+// utility API
+@import "./bootstrap/utilities/api";
+
+@import "./bootstrap/bootstrap.scss";
+
+// Custom code
+
+.white-box-shadow {
+    box-shadow: 0 1rem 3rem rgba($white, .175);;
+}
+
+.full-height {
+    height: 100%;
+    min-height: 100%;
+}
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "background-color": (
+      property: background-color,
+      class: bg,
+      local-vars: (
+        "bg-opacity": 1
+      ),
+      values: map-merge(
+        $utilities-bg-colors,
+        (
+          "black": black
+        )
+      )
+    ),
+  )
+);
