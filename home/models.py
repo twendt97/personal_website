@@ -13,18 +13,15 @@ class HomePage(Page):
 
     template = "home/home_page.html"
 
-    my_title = models.CharField(max_length=100, blank=False, null=True)
-
     content = StreamField(
         [
-            ("cards", blocks.CardBlock())
+            ("subject", blocks.SubjectBlock())
         ],
         null = True,
         blank = True
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel("my_title"),
         StreamFieldPanel("content")
     ]
 
