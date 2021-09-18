@@ -6,13 +6,11 @@
         <h3> {{ self.heading }} </h3>
     {% endif %}
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-6 col-xl-4">
             {{ self.content }}
         </div>
-        <div class="col-lg-8 box-shadow">
+        <div class="col-lg-6 col-xl-8">
             <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid" />
         </div>
     </div>
 </div>
-
-<hr>
