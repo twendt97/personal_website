@@ -1,10 +1,27 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block header %}
+<div class="container bg-primary">
+    <nav aria-label="breadcrumb">
+        {% if self.get_ancestors|length > 1 %}
+            <ol class="breadcrumb">
+                {% for p in self.get_ancestors %}
+                    {% if p.is_root == False %}
+                        <li class="breadcrumb-item"><a href="{{ p.url }}" class="link-light text-decoration-none">{{ p.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                <li class="breadcrumb-item active">{{ self.title }}</li>
+            </ol>
+        {% endif %}
+    </nav>
+</div>
+{% endblock %}
 
 
 {% block content %}
-<div class="min-vh-100 full-height bg-white">
     <div class="container bg-light shadow-lg">
         {% block canvas %}{% endblock %}
     </div>
-</div>
 {% endblock %}

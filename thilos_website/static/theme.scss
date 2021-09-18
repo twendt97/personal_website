@@ -5,12 +5,23 @@
 $enable-rounded: false;
 $enable-shadows: true;
 
-// colors
-
+// others
+$primary: #002c6e;
+$breadcrumb-divider: quote(">");
 
 @import './bootstrap/variables';
-
 // Variable overwrites that depend on variables of bootstrap (might not always work e.g. primary can not be overwritten here)
+// breadcrumps
+$breadcrumb-padding-y: $spacer;
+$breadcrumb-margin-bottom: $spacer;
+$breadcrumb-divider-color: $gray-300;
+$breadcrumb-active-color: $gray-300;
+
+//buttons
+$btn-box-shadow: inset 0 1px 0 rgba($white, .15), 0 5px 5px rgba($black, .75);
+
+$btn-padding-y-lg: 20px;
+$btn-padding-x-lg: 30px;
 
 // Remainder of required stylsheets
 @import "./bootstrap/mixins";
@@ -64,31 +75,7 @@ $enable-shadows: true;
   }
 }
 
-/*
-.subject-block{
-    .banner-content{
-      position: absolute;
-      top: 50px;
-      width: 100%;
-    }
-    img{
-      width: 100%;
-      height: auto;
-    }
-    span{
-      font-size: $bannerHeading;
-      display: block;
-      text-transform: uppercase;
-      font-weight: bold;
-      @include mQ(3000px, 1200px){
-        font-size: 68px;
-      }
-    }
-    span.sub-title{
-      font-weight: normal;
-      margin-bottom: 30px;
-    }
-}*/
+
 
 $utilities: map-merge(
   $utilities,

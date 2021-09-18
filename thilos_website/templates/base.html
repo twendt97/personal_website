@@ -33,8 +33,17 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-            {% block content %}
-            {% endblock %}
+        <header>
+            {% block header %} {% endblock %}
+        </header>
+
+        <main>
+        {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            {% block footer %}{% endblock %}
+        </footer>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/thilos_website.js' %}"></script>
