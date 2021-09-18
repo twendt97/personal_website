@@ -1,11 +1,24 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
 
-<div class="container-sm px-0">
+{% image self.author_image fill-500x500 as img %}
+
+
+<div class="container px-0">
+    <div id="welcome-section" class="mx-0 py-5 row shadow-lg justify-content-evenly">
+        <div class="col-lg-3">
+            <p class="fs-1 fw-bold text-center">{{ self.welcome_text }}</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid shadow-lg rounded-1 img-center">
+            <span class="d-block pt-3 fs-4 text-center">{{ self.image_caption }}</span>
+        </div>
+    </div>
+
     {% for block in page.content %}
         {% include_block block %}
     {% endfor %}

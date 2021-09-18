@@ -1,11 +1,9 @@
 from django.db import models
-from django.db.models.fields import Field
 from datetime import date
 
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import RichTextField
 from wagtail.core.fields import StreamField
 
 from streams import blocks

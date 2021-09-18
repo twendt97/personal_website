@@ -2,7 +2,7 @@
 
 // Default variable overwrite
 // settings
-$enable-rounded: false;
+$enable-rounded: true;
 $enable-shadows: true;
 
 // others
@@ -13,7 +13,7 @@ $breadcrumb-divider: quote(">");
 // Variable overwrites that depend on variables of bootstrap (might not always work e.g. primary can not be overwritten here)
 // breadcrumps
 $breadcrumb-padding-y: $spacer;
-$breadcrumb-margin-bottom: $spacer;
+$breadcrumb-margin-bottom: 0;
 $breadcrumb-divider-color: $gray-300;
 $breadcrumb-active-color: $gray-300;
 
@@ -75,6 +75,11 @@ $btn-padding-x-lg: 30px;
   }
 }
 
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 $utilities: map-merge(
