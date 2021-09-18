@@ -37,7 +37,35 @@ $enable-shadows: true;
     box-shadow: 0 1rem 3rem rgba($white, .175);;
 }
 
-.banner{
+.subject-block {
+  img {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    object-fit: cover;
+  }
+
+  #title {
+    font-size: 50px;
+  }
+
+  #cta {
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #canvas {
+    width: 100%;
+    top: 100px;
+  }
+}
+
+/*
+.subject-block{
     .banner-content{
       position: absolute;
       top: 50px;
@@ -60,7 +88,7 @@ $enable-shadows: true;
       font-weight: normal;
       margin-bottom: 30px;
     }
-}
+}*/
 
 $utilities: map-merge(
   $utilities,
