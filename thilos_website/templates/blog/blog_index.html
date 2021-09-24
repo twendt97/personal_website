@@ -1,26 +1,29 @@
 {% extends "basic_page.html" %}
 {% load wagtailimages_tags %}
 
-{% block canvas %}
+{% block content %}
 
+    <div class="container bg-light shadow-lg py-3">
     <div class="p-5">
         <h1 class="display-5 fw-bold"> {{ self.custom_title }}</h1>
         <p class="col-md-8 fs-4">{{ self.description }}</p>
     </div>
+    </div>
 
     {% for post in posts %}
-    <hr>
-    <div class="row py-3 px-0 justify-content-evenly align-items-center">
-        <div class="col-lg-6 px-4">
-            {% image post.thumbnail fill-1500x1000 as blog_img %}
-            <a href="{{ post.url }}">
-                <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}" class="img-fluid rounded-1 shadow">
-            </a>
-        </div>
-        <div class="col-lg-4 py-3 px-4">
-            <h1>{{ post.custom_title }}</h1>
-            <p class="fs-5">{{ post.summary }}</p>
-            <a href="{{ post.url }}" class="btn btn-primary mt-4">Read More</a>
+    <div class="container bg-light shadow-lg my-5 py-3">
+        <div class="row py-3 px-0 justify-content-evenly align-items-center">
+            <div class="col-lg-6 px-4">
+                {% image post.thumbnail fill-1500x1000 as blog_img %}
+                <a href="{{ post.url }}">
+                    <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}" class="img-fluid rounded-1 shadow">
+                </a>
+            </div>
+            <div class="col-lg-4 py-3 px-4">
+                <h1>{{ post.custom_title }}</h1>
+                <p class="fs-5">{{ post.summary }}</p>
+                <a href="{{ post.url }}" class="btn btn-primary mt-4">Read More</a>
+            </div>
         </div>
     </div>
     {% endfor %}

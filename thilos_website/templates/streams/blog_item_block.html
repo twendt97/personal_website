@@ -1,16 +1,37 @@
 {% load wagtailimages_tags %}
-{% image self.image min-900x600 as img %}
 
-<div class="p-3">
+<div class="container bg-light shadow my-3 p-4">
     {% if self.heading %}
-        <h3> {{ self.heading }} </h3>
+        <span class="d-block fs-2 fw-bold pb-5 text-center"> {{ self.heading }} </span>
     {% endif %}
-    <div class="row">
-        <div class="col-lg-6 col-xl-4">
+    <div class="row justify-content-evenly align-items-center">
+        <div class="col-xxl-5 text-center fs-5">
             {{ self.content }}
         </div>
-        <div class="col-lg-6 col-xl-8">
-            <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid img-center" />
+        <div class="col-xxl-6">
+            {% if self.gallery_images|length > 1 %}
+            <div id="gallery_carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in self.gallery_images %}
+                        {% image image fill-900x600 as img %}
+                        <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                            <img src="{{ img.url }}" alt="{{ img.alt }}" class="d-block w-100" />
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#gallery_carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gallery_carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            {% else %}
+                {% image self.gallery_images.0 fill-900x600 as img %}
+                <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid img-center" />
+            {% endif %}
+            </div>
         </div>
     </div>
 </div>

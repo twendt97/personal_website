@@ -25,7 +25,7 @@ class BlogPost(Page):
         blank=False,
         null=True,
         help_text='Write a summary of your blog post here',
-        max_length=500
+        max_length=250
     )
 
     thumbnail = models.ForeignKey(
