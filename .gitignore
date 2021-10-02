@@ -1,2 +1,3 @@
 # Environment Variable files
 .env.prod
+.env.prod.db

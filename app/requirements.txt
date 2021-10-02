@@ -3,3 +3,5 @@ wagtail>=2.12,<2.13
 django-libsass>=0.7
 django_compressor>=2.2
 django-debug-toolbar
+psycopg2-binary==2.9.1
+gunicorn==20.0.4
