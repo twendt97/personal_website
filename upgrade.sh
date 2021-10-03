@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#DOCKER_COMPOSE_FILE=/home/fuchs/server/website/docker-compose.yml
-DOCKER_COMPOSE_FILE=./docker-compose.yml
 WAGTAIL_SERVICE=web
 WAGTAIL_USER=wagtail
 DB_SERVICE=db
