@@ -7,8 +7,8 @@ services:
     expose:
       - 8000
     volumes:
-      - /home/thilo/docker/thilos_server/volumes/wagtail/static:/app/static
-      - /home/thilo/docker/thilos_server/volumes/wagtail/media:/app/media
+      - ../volumes/wagtail/media:/app/media
+      - ../volumes/wagtail/static:/app/static
       - ./backups:/app/backups
     env_file:
      - ./.env.prod

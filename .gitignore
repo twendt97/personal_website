@@ -3,3 +3,4 @@
 .env.prod.db
 .env.upgrade
 backups/*
+docker-compose.dev.yml
