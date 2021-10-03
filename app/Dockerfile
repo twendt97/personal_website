@@ -25,6 +25,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     zlib1g-dev \
     libwebp-dev \
     netcat \
+    postgresql-client-11 \
  && rm -rf /var/lib/apt/lists/*
 
 # upgrade pip
@@ -37,13 +38,17 @@ RUN pip install -r /requirements.txt
 # Use /app folder as a directory where the source code is stored.
 ENV APP_HOME=/app
 RUN mkdir ${APP_HOME}
-RUN mkdir ${APP_HOME}/static && mkdir ${APP_HOME}/media
+RUN mkdir ${APP_HOME}/static && mkdir ${APP_HOME}/media && mkdir ${APP_HOME}/backups
 WORKDIR ${APP_HOME}
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
 RUN sed -i 's/\r$//g' ${APP_HOME}/entrypoint.sh
 RUN chmod +x ${APP_HOME}/entrypoint.sh
+
+# copy .run.sh
+COPY ./.run.sh .
+RUN chown wagtail:wagtail ${APP_HOME}/.run.sh && chmod +x ${APP_HOME}/.run.sh
 
 # Set WORKDIR directory and sub dirs to be owned by the "wagtail" user.
 RUN chown -R wagtail:wagtail ${APP_HOME}
