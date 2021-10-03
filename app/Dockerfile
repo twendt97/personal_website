@@ -2,7 +2,7 @@
 FROM python:3.8.1-slim-buster
 
 # Add user that will be used in the container.
-RUN useradd wagtail
+RUN groupadd --gid 1000 wagtail && useradd --uid 1000 -g wagtail wagtail
 
 # Port used by this container to serve HTTP.
 EXPOSE 8000
@@ -35,18 +35,18 @@ COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
 # Use /app folder as a directory where the source code is stored.
-RUN mkdir /app
-WORKDIR /app
+ENV APP_HOME=/app
+RUN mkdir ${APP_HOME}
+RUN mkdir ${APP_HOME}/static && mkdir ${APP_HOME}/media
+WORKDIR ${APP_HOME}
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+RUN sed -i 's/\r$//g' ${APP_HOME}/entrypoint.sh
+RUN chmod +x ${APP_HOME}/entrypoint.sh
 
-# Set WORKDIR directory to be owned by the "wagtail" user. This Wagtail project
-# uses SQLite, the folder needs to be owned by the user that
-# will be writing to the database file.
-RUN chown wagtail:wagtail /app
+# Set WORKDIR directory and sub dirs to be owned by the "wagtail" user.
+RUN chown -R wagtail:wagtail ${APP_HOME}
 
 # Copy the source code of the project into the container.
 COPY --chown=wagtail:wagtail . .
@@ -54,8 +54,6 @@ COPY --chown=wagtail:wagtail . .
 # Use user "wagtail" to run the build commands below and the server itself.
 USER wagtail
 
-# Collect static files.
-# RUN python manage.py collectstatic --noinput --clear
-# RUN python manage.py compress --force
-
+# This line can not take a variable
+# When changing the APP_HOME, adjust this line as well
 ENTRYPOINT ["/app/entrypoint.sh"]
