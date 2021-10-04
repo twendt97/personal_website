@@ -10,7 +10,7 @@
         </div>
         <div class="col-xxl-6">
             {% if self.gallery_images|length > 1 %}
-            <div id="gallery_carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div id="gallery_carousel_{{ forloop.counter }}" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {% for image in self.gallery_images %}
                         {% image image fill-900x600 as img %}
@@ -19,11 +19,11 @@
                         </div>
                     {% endfor %}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#gallery_carousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#gallery_carousel_{{ forloop.counter }}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#gallery_carousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#gallery_carousel_{{ forloop.counter }}" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
