@@ -97,7 +97,8 @@ class BlogIndex(Page):
         """Adding custom stuff to our context."""
         context = super().get_context(request, *args, **kwargs)
         # Get all posts
-        all_posts = BlogPost.objects.live().public().order_by('-first_published_at')
+        all_posts = BlogPost.objects.child_of(self).live().public().order_by('-first_published_at')
+        #all_posts = BlogIndex.get_children(self).live().public().order_by('-first_published_at')
 
         context["posts"] = all_posts
         return context
