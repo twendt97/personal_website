@@ -8,6 +8,8 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+from puput import urls as puput_urls
+
 urlpatterns = [
     path('django-admin/', admin.site.urls),
 
@@ -36,6 +38,7 @@ if settings.DEBUG:
 # Wagtail's page serving mechanism. This should be the last pattern in
 # the list:
 urlpatterns = urlpatterns + [
+        path(r'',include(puput_urls)),
         path("", include(wagtail_urls)),
 
         # Alternatively, if you want Wagtail pages to be served from a subpath
