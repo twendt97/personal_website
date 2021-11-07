@@ -1,5 +1,5 @@
 Django>=3.0,<3.1
-wagtail>=2.14,<2.15
+wagtail>=2.15,<2.16
 django-libsass>=0.7
 django_compressor>=2.2
 psycopg2-binary==2.9.1
@@ -9,3 +9,4 @@ wheel
 django-colorful 
 django-el-pagination 
 django-social-share
+puput
